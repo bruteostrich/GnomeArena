@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GnomeArena.CSharp.Plugins", "GnomeArena.CSharp.Plugins.csproj", "{A7ADDFDC-151E-C7A2-A96E-4979663878EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GnomeArena.CSharp", "GnomeArena.CSharp.csproj", "{368CB9B5-6CCB-2D33-7AC4-2E4F4F720BA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GnomeArena.CSharp.Editor", "GnomeArena.CSharp.Editor.csproj", "{88500909-1BD4-82E6-8F2C-F0B6828B0ADE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7ADDFDC-151E-C7A2-A96E-4979663878EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7ADDFDC-151E-C7A2-A96E-4979663878EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7ADDFDC-151E-C7A2-A96E-4979663878EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7ADDFDC-151E-C7A2-A96E-4979663878EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{368CB9B5-6CCB-2D33-7AC4-2E4F4F720BA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{368CB9B5-6CCB-2D33-7AC4-2E4F4F720BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{368CB9B5-6CCB-2D33-7AC4-2E4F4F720BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{368CB9B5-6CCB-2D33-7AC4-2E4F4F720BA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88500909-1BD4-82E6-8F2C-F0B6828B0ADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88500909-1BD4-82E6-8F2C-F0B6828B0ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88500909-1BD4-82E6-8F2C-F0B6828B0ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88500909-1BD4-82E6-8F2C-F0B6828B0ADE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
