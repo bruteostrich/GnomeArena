@@ -10,3 +10,10 @@ Build/*
 *.pidb
 *.userprefs
 GnomeArena_Data/
+Assets/GruffyModularEnvironmentsV1.0_3Pack/BlendFiles/BlendFiles.zip
+Assets/GruffyModularEnvironmentsV1.0_3Pack/BlendFiles/BlendFiles.zip.meta
+*.psd
+Assets/GruffyModularEnvironmentsV1.0_3Pack/GruffyModularEnvironment 1/Materials/ModularAtlasReadyRectified.psd.meta
+Assets/GruffyModularEnvironmentsV1.0_3Pack/GruffysModularEnviroment 2/psd/UVAOLayout.psd.meta
+Assets/GruffyModularEnvironmentsV1.0_3Pack/GruffysModularEnvironment 3/Materials/THECUBELayoutUV.psd.meta
+Assets/GruffyModularEnvironmentsV1.0_3Pack/GruffysModularEnvironment 3/Materials/TheCubeAOUVLayoutA.psd.meta

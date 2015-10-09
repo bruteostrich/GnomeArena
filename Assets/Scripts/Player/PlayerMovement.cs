@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
         FollowMove
     }
     public MovementType movementType = MovementType.KeyboardMove;
+    //public NavMeshAgent nav;
     Vector3 movement;
     Vector3 target;
     Animator anim;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     float camRayLength = 100.0f;
     bool moving = false;
     public float stopSnapThreshold = 0.5f;
+    bool clickDetected = false;
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -39,26 +41,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if (moving == true)
             {
-                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || (Input.GetMouseButtonDown(0)))
-                {
-                    RaycastHit hit;
-                    Ray ray;
-                    #if UNITY_EDITOR || UNITY_STANDALONE
-                    ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    //for touch device
-                    #elif (UNITY_ANDROID || UNITY_IPHONE || UNITY_WP8)
-                    ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-                    #endif
-                    //Check if the ray hits any collider
-                    if (Physics.Raycast(ray, out hit))
-                    {
-                        //set a flag to indicate to move the gameobject
-                        moving = true;
-                        //save the click / tap position
-                        target = hit.point;
-                        target.y = 0.0f;
-                    }
-                }
                 MoveTo(target);
                 Turning();
                 Animating(target.x, target.z);
@@ -71,31 +53,35 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || (Input.GetMouseButtonDown(0)))
+                MoveTo(playerRigidBody.position);
+                Turning();
+                Animating(0.0f, 0.0f);
+            }
+        }
+    }
+    void Update()
+    {
+        if (movementType == MovementType.ClickToMove)
+        {
+            // including update here for input, was getting loss of clicks before
+            if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || (Input.GetMouseButtonDown(0)))
+            {
+                RaycastHit hit;
+                Ray ray;
+#if UNITY_EDITOR || UNITY_STANDALONE
+                ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                //for touch device
+#elif (UNITY_ANDROID || UNITY_IPHONE || UNITY_WP8)
+            ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+#endif
+                //Check if the ray hits any collider
+                if (Physics.Raycast(ray, out hit))
                 {
-                    RaycastHit hit;
-                    Ray ray;
-                    #if UNITY_EDITOR || UNITY_STANDALONE
-                    ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    //for touch device
-                    #elif (UNITY_ANDROID || UNITY_IPHONE || UNITY_WP8)
-                    ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-                    #endif
-                    //Check if the ray hits any collider
-                    if (Physics.Raycast(ray, out hit))
-                    {
-                        //set a flag to indicate to move the gameobject
-                        moving = true;
-                        //save the click / tap position
-                        target = hit.point;
-                        target.y = 0.0f;
-                    }
-                }
-                else
-                {
-                    MoveTo(playerRigidBody.position);
-                    Turning();
-                    Animating(0.0f, 0.0f);
+                    //set a flag to indicate to move the gameobject
+                    moving = true;
+                    //save the click / tap position
+                    target = hit.point;
+                    target.y = 0.0f;
                 }
             }
         }
