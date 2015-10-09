@@ -14,9 +14,9 @@ public class PlayerHealth : MonoBehaviour
 
 
     Animator anim;
-    AudioSource playerAudio;
+    //AudioSource playerAudio;
     PlayerMovement playerMovement;
-    PlayerShooting playerShooting;
+    //PlayerShooting playerShooting;
     bool isDead;
     bool damaged;
 
@@ -24,10 +24,11 @@ public class PlayerHealth : MonoBehaviour
     void Awake ()
     {
         anim = GetComponent <Animator> ();
-        playerAudio = GetComponent <AudioSource> ();
+        //playerAudio = GetComponent <AudioSource> ();
         playerMovement = GetComponent <PlayerMovement> ();
-        playerShooting = GetComponentInChildren <PlayerShooting> ();
+        //playerShooting = GetComponentInChildren <PlayerShooting> ();
         currentHealth = startingHealth;
+        isDead = false;
     }
 
 
@@ -53,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
 
         healthSlider.value = currentHealth;
 
-        playerAudio.Play ();
+        //playerAudio.Play ();
 
         if(currentHealth <= 0 && !isDead)
         {
@@ -66,15 +67,15 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
 
-        playerShooting.DisableEffects ();
+        //playerShooting.DisableEffects ();
 
         anim.SetTrigger ("isDead");
 
-        playerAudio.clip = deathClip;
-        playerAudio.Play ();
+        //playerAudio.clip = deathClip;
+        //playerAudio.Play ();
 
         playerMovement.enabled = false;
-        playerShooting.enabled = false;
+        //playerShooting.enabled = false;
     }
 
 

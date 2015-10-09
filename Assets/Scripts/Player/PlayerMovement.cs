@@ -114,6 +114,13 @@ public class PlayerMovement : MonoBehaviour
     void Animating(float h, float v)
     {
         bool walking = h != 0.0f || v != 0.0f;
-        anim.SetBool("IsWalking", walking);
+        if (walking)
+        {
+            anim.SetFloat("Speed", 0.5f);
+        }
+        else
+        {
+            anim.SetFloat("Speed", 0.0f);
+        }
     }
 }

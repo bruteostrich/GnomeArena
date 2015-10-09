@@ -13,6 +13,7 @@ public class EnemyPatrol : MonoBehaviour
     public Transform[] points;
     public float chanceToBreak = 0.05f;
     Transform player;
+    PlayerHealth playerHealth;
     NavMeshAgent nav;
     State currentState = State.LOOKING;
     State lastMovingState = State.MOVINGUP;
@@ -28,13 +29,22 @@ public class EnemyPatrol : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerHealth = player.GetComponent<PlayerHealth>();
         nav = GetComponent<NavMeshAgent>();
     }
 
 
     void Update()
     {
-        if(currentState == State.MOVINGUP)
+        if (/*enemyHealth.currentHealth > 0 && */playerHealth.currentHealth > 0)
+        {
+            nav.SetDestination(player.position);
+        }
+        else
+        {
+            nav.enabled = false;
+        }
+        if (currentState == State.MOVINGUP)
         {
             // check if done navigating
             if(nav.remainingDistance < nav.stoppingDistance)

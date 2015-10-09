@@ -139,6 +139,10 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 178094, guid: fd6d599a0cb9bd046aabcdf71e00bcef, type: 2}
   m_PrefabInternal: {fileID: 1037470312}
+--- !u!4 &26770944 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 433912, guid: fd6d599a0cb9bd046aabcdf71e00bcef, type: 2}
+  m_PrefabInternal: {fileID: 1037470312}
 --- !u!114 &26770945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1033,7 +1037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5495764b0bd5b944860ff66d063fdb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 26770944}
   smoothing: 5
 --- !u!1 &884062698
 GameObject:
@@ -1147,7 +1151,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 178094, guid: fd6d599a0cb9bd046aabcdf71e00bcef, type: 2}
       propertyPath: m_Name
-      value: Dwarf_Warrior_RIG
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 11441892, guid: fd6d599a0cb9bd046aabcdf71e00bcef, type: 2}
       propertyPath: characters.Array.data[1]
@@ -1167,6 +1171,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11441892, guid: fd6d599a0cb9bd046aabcdf71e00bcef, type: 2}
+    - {fileID: 9596310, guid: fd6d599a0cb9bd046aabcdf71e00bcef, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fd6d599a0cb9bd046aabcdf71e00bcef, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1060032494 stripped
