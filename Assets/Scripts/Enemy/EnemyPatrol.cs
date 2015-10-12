@@ -38,88 +38,87 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (/*enemyHealth.currentHealth > 0 && */playerHealth.currentHealth > 0)
         {
-            nav.SetDestination(player.position);
+            if (currentState == State.MOVINGUP)
+            {
+                // check if done navigating
+                if (nav.remainingDistance < nav.stoppingDistance)
+                {
+                    // check if at terminal point
+                    if (isAtTerminalPoint())
+                    {
+                        currentState = State.LOOKING;
+                        lastMovingState = State.MOVINGUP;
+                    }
+                    else
+                    {
+                        nav.SetDestination(points[currentPoint + 1].position);
+                        currentPoint += 1;
+                    }
+
+                }
+            }
+            else if (currentState == State.MOVINGDOWN)
+            {
+                // check if done navigating
+                if (nav.remainingDistance < nav.stoppingDistance)
+                {
+                    // check if at terminal point
+                    if (isAtTerminalPoint())
+                    {
+                        currentState = State.LOOKING;
+                        lastMovingState = State.MOVINGDOWN;
+                    }
+                    else
+                    {
+                        nav.SetDestination(points[currentPoint - 1].position);
+                        currentPoint -= 1;
+                    }
+                }
+            }
+            else if (currentState == State.LOOKING)
+            {
+                // timer management
+                if (lookingTime <= 0.0f)
+                {
+                    lookingTime = 0.0f;
+                }
+                else
+                {
+                    lookingTime -= Time.deltaTime;
+                }
+
+                if (lookingTime == 0.0f)
+                {
+                    // if timer has finished, change look direction and restart timer or start moving
+                    Turn();
+                    int move = Random.Range(1, 4);
+                    if (move == 1)// start moving
+                    {
+                        if (lastMovingState == State.MOVINGDOWN)
+                        {
+                            currentState = State.MOVINGUP;
+                            nav.SetDestination(points[1].position);
+                            currentPoint = 1;
+                        }
+                        else
+                        {
+                            currentState = State.MOVINGDOWN;
+                            nav.SetDestination(points[points.GetLength(0) - 2].position);
+                            currentPoint = points.GetLength(0) - 2;
+                        }
+                    }
+                    else
+                    {
+                        // keep looking with new timer
+                        lookingTime = Random.Range(2.0f, 4.0f);
+                    }
+                }
+            }
         }
         else
         {
             nav.enabled = false;
-        }
-        if (currentState == State.MOVINGUP)
-        {
-            // check if done navigating
-            if(nav.remainingDistance < nav.stoppingDistance)
-            {
-                // check if at terminal point
-                if (isAtTerminalPoint())
-                {
-                    currentState = State.LOOKING;
-                    lastMovingState = State.MOVINGUP;
-                }
-                else
-                {
-                    nav.SetDestination(points[currentPoint + 1].position);
-                    currentPoint += 1;
-                }
-                
-            }
-        }
-        else if (currentState == State.MOVINGDOWN)
-        {
-            // check if done navigating
-            if (nav.remainingDistance < nav.stoppingDistance)
-            {
-                // check if at terminal point
-                if(isAtTerminalPoint())
-                {
-                    currentState = State.LOOKING;
-                    lastMovingState = State.MOVINGDOWN;
-                }
-                else
-                {
-                    nav.SetDestination(points[currentPoint - 1].position);
-                    currentPoint -= 1;
-                }   
-            }
-        }
-        else if(currentState == State.LOOKING)
-        {
-            // timer management
-            if(lookingTime <= 0.0f)
-            {
-                lookingTime = 0.0f;
-            }
-            else
-            {
-                lookingTime -= Time.deltaTime;
-            }
-            
-            if(lookingTime == 0.0f)
-            {
-                // if timer has finished, change look direction and restart timer or start moving
-                Turn();
-                int move = Random.Range(1, 4);
-                if(move == 1)// start moving
-                {
-                    if(lastMovingState == State.MOVINGDOWN)
-                    {
-                        currentState = State.MOVINGUP;
-                        nav.SetDestination(points[1].position);
-                        currentPoint = 1;
-                    }
-                    else
-                    {
-                        currentState = State.MOVINGDOWN;
-                        nav.SetDestination(points[points.GetLength(0) - 2].position);
-                        currentPoint = points.GetLength(0) - 2;
-                    }                    
-                }
-                else
-                {
-                    // keep looking with new timer
-                    lookingTime = Random.Range(2.0f, 4.0f);
-                }
-            }           
-        }
+        }       
     }
     void Turn()
     {

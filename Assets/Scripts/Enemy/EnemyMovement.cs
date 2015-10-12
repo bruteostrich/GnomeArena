@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public float chaseDistance = 30.0f;
     Transform player;
     PlayerHealth playerHealth;
     //EnemyHealth enemyHealth;
@@ -20,8 +21,9 @@ public class EnemyMovement : MonoBehaviour
 
     void Update ()
     {
-        if(/*enemyHealth.currentHealth > 0 && */playerHealth.currentHealth > 0)
+        if(/*enemyHealth.currentHealth > 0 && */playerHealth.currentHealth > 0 && (player.position - nav.gameObject.transform.position).magnitude < chaseDistance)
         {
+            nav.enabled = true;
             nav.SetDestination (player.position);
         }
         else
