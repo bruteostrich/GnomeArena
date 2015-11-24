@@ -91,7 +91,7 @@ public class EnemyPatrol : MonoBehaviour
                 {
                     // if timer has finished, change look direction and restart timer or start moving
                     Turn();
-                    int move = Random.Range(1, 4);
+                    int move = Random.Range(1, 3);
                     if (move == 1)// start moving
                     {
                         if (lastMovingState == State.MOVINGDOWN)

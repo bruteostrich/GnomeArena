@@ -365,7 +365,7 @@ MonoBehaviour:
   - {fileID: 427570}
   - {fileID: 474536}
   - {fileID: 415372}
-  chanceToBreak: .0500000007
+  chanceToBreak: .550000012
 --- !u!135 &13522678
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1566,6 +1566,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.w
       value: .707106709
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: chanceToBreak
+      value: .550000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
