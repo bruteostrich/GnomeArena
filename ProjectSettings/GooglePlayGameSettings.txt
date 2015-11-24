@@ -1,0 +1,7 @@
+lastUpgrade=00927
+ios.ClientId=689150314124-3viut3evdnph6kok2lls7at5u040bias.apps.googleusercontent.com
+proj.ConstantsClassName=Constants
+ios.ResourceData=%23define+CLIENT_ID+%40%22689150314124-3viut3evdnph6kok2lls7at5u040bias.apps.googleusercontent.com%22%0d%0a%23define+BUNDLE_ID+%40%22com.Puddle.GnomeArenaRun%22%0d%0a%23define+ACH_START_GAME+%40%22CgkIjI29pIcUEAIQAQ%22
+and.ClientId=689150314124-3viut3evdnph6kok2lls7at5u040bias.apps.googleusercontent.com
+ios.BundleId=com.Puddle.GnomeArenaRun
+ios.SetupDone=true
